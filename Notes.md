@@ -116,6 +116,8 @@ RUN 		adduser -D -u 1000 appuser             	# Create non-root user inside alpi
 USER 		appuser				# Run as non-root user
 ENTRYPOINT 	["node", "/app/index.js"]    		# Application entry point
 CMD 		["env", "dev"]                        		# Default arguments (can be overridden)
+
+
 Reduce image size: - Multi stage docker build and using light weight images [e. g distroless and alpine]
 If we use final image is distroless + non-root (tiny + secure) also with node:22-alpine runtime instead of distroless (so we can debug inside container with a shell
   
@@ -168,6 +170,7 @@ Kubernetes Commands
 •	kubectl logs podName  To check the logs of exited container
 •	kubectl exec podName command To run the command without entering into pod
 •	kubectl exec -it podName bash/sh  To run the command by entering into pod
+
 EKSCTl is tool we can install k8s with single command
 
 Kubectl 		 Command line tool to access the cluster resource
@@ -294,6 +297,7 @@ spec:
 Kubernetes Architecture
 Kubernetes, often referred to as K8s, is an open-source container orchestration platform designed to automate the deployment, scaling, and operation of containerized applications. Its architecture is designed to provide a robust and scalable solution for managing containerized workloads.   
 Key Components of Kubernetes Architecture:
+
 1.	Master Node:
 o	Control Plane: Handles the overall management and orchestration of the cluster.
 o	 Components: 
@@ -301,6 +305,7 @@ o	 Components:
 	KubeAPI Server: The central point of communication for the cluster, handling requests from clients and interacting with other components. Port 6443 
 	Scheduler: Assigns pods to worker nodes based on various factors like resource availability and constraints.
 	Controller Manager: Responsible for maintaining the desired state of the cluster by running various controllers (e.g., ReplicaSet, Deployment, Service).
+
 2.	Worker Nodes:
 o	Runtime Environment: Executes containerized applications.
 o	Components: 
